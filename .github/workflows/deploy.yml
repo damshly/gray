@@ -35,7 +35,7 @@ jobs:
 
       # 5. رفع مجلد out إلى Hostinger عبر FTP
       - name: Deploy via FTP
-        uses: SamKirsch/ftp-deploy-action@v4.3.5
+        uses: SamKirschner/ftp-deploy-action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
