@@ -1,46 +1,41 @@
-name: Deploy Next.js to Hostinger
+name: Deploy Next.js Export to Hostinger
 
 on:
   push:
     branches:
       - main
+      - dev
 
 jobs:
-  build-and-deploy:
+  web-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout repository
-      - name: Checkout Repository
+      - name: Get latest code
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3. Setup pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 9
 
-      # 4. Install Dependencies
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile --ignore-workspace
 
-      # 5. Build Static Site (Generates ./out folder)
-      - name: Build Static Site
-        run: pnpm build
+      - name: Build static site
+        run: npx next build
 
-      # 6. Sync / Deploy via FTP to Hostinger
-      - name: Deploy via FTP
+      - name: Sync files to Hostinger
+        if: github.ref == 'refs/heads/main'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
           server-dir: /public_html/
-          dangerous-clean-slate: false
+          local-dir: ./out/
