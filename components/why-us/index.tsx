@@ -1,4 +1,15 @@
 import Image from "next/image";
+import {
+  Sparkles,
+  Droplets,
+  SprayCan,
+  ShieldCheck,
+  Brush,
+  Sparkle,
+  Sun,
+  Waves,
+  CheckCircle2
+} from "lucide-react";
 
 interface ReasonItem {
   id: string;
@@ -90,28 +101,56 @@ export default function WhyUs() {
   return (
     <section
       id="ueber-mk"
-      className="relative w-full bg-white text-charcoal py-24 sm:py-32 lg:py-36 overflow-hidden border-t border-charcoal/10"
+      className="relative w-full text-white pt-24 pb-24 sm:pb-32 lg:pb-36 overflow-hidden z-20 backdrop-blur-xl -mt-24 sm:-mt-32"
     >
-      {/* Background Subtle Radial Dot Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#36454f_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none" />
+      {/* 🌊 لون الخلفية الثابت بنفس نسبة قسم الخدمات (25%) */}
+      <div
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          backgroundColor: `#406D72`,
+        }}
+      />
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
-        
+
+
+      {/* 2. High Density Floating Stickers (مطابق لقسم الخدمات) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <Sparkles className="absolute top-8 left-10 w-16 h-16 text-white/30 rotate-12" />
+        <SprayCan className="absolute top-16 right-16 w-20 h-20 text-white/25 -rotate-45" />
+        <Droplets className="absolute top-28 left-1/4 w-12 h-12 text-[#667373] opacity-40 rotate-180" />
+        <Sparkle className="absolute top-12 right-1/3 w-10 h-10 text-white/40 animate-pulse" />
+        <ShieldCheck className="absolute top-1/3 left-8 w-24 h-24 text-white/20 rotate-6" />
+        <Brush className="absolute top-1/3 right-10 w-16 h-16 text-[#667373] opacity-50 -rotate-12" />
+        <Sun className="absolute top-2/5 left-1/3 w-14 h-14 text-white/25" />
+        <Waves className="absolute top-1/2 right-1/4 w-20 h-20 text-white/20 -rotate-12" />
+        <Sparkles className="absolute top-2/3 left-12 w-20 h-20 text-white/35 rotate-45" />
+        <CheckCircle2 className="absolute top-2/3 right-12 w-16 h-16 text-white/20 rotate-12" />
+        <Droplets className="absolute bottom-20 left-1/4 w-16 h-16 text-white/30 rotate-45" />
+        <SprayCan className="absolute bottom-12 right-1/3 w-18 h-18 text-[#667373] opacity-45 rotate-12" />
+        <Sparkles className="absolute bottom-8 right-8 w-28 h-28 text-white/25 -rotate-12" />
+      </div>
+
+      {/* 3. Radial Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:28px_28px] opacity-15 pointer-events-none z-0" />
+
+      {/* Main Content Area */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 pt-12 sm:pt-16">
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-charcoal/30 bg-charcoal/5 backdrop-blur-sm text-xs sm:text-sm font-bold uppercase tracking-widest text-charcoal mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-xs sm:text-sm font-bold uppercase tracking-widest text-white mb-4 shadow-sm">
             <span>Warum MK Reinigung</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-charcoal leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
             Ihr verlässlicher Partner für glänzende Ergebnisse
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-charcoal/80 leading-relaxed font-medium">
-            Mit Leidenschaft, modernem Equipment und geschultem Blick für Details sorgen wir dafür, 
+          <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed font-medium">
+            Mit Leidenschaft, modernem Equipment und geschultem Blick für Details sorgen wir dafür,
             dass Ihre Räumlichkeiten stets einen perfekten und gepflegten Eindruck hinterlassen.
           </p>
         </div>
 
-        {/* 4 Cards Grid - Glass Frosted to Clean Design */}
+        {/* 4 Cards Grid - Glass Frosted Style */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {reasons.map((reason) => {
             const IconComponent = reason.icon;
@@ -119,27 +158,15 @@ export default function WhyUs() {
             return (
               <div
                 key={reason.id}
-                className="relative group rounded-3xl p-8 sm:p-10 border border-charcoal transition-all duration-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(245, 245, 245, 0.55) 100%)",
-                  backdropFilter: "blur(14px)",
-                  WebkitBackdropFilter: "blur(14px)",
-                }}
+                className="relative group rounded-3xl p-8 sm:p-10 border border-white/25 bg-white/10 backdrop-blur-md transition-all duration-700 overflow-hidden shadow-2xl hover:bg-white/15 hover:border-white/50 hover:-translate-y-1.5"
               >
-                {/* Frosted Glass Overlay that clears on hover */}
-                <div className="absolute inset-0 bg-white/40 backdrop-blur-md transition-opacity duration-700 pointer-events-none group-hover:opacity-0" />
-
-                {/* Clean Clear Layer on hover */}
-                <div className="absolute inset-0 bg-white/95 opacity-0 transition-opacity duration-700 pointer-events-none group-hover:opacity-100" />
-
-                {/* Light Reflection / Cleaning Shine Sweep (كانه كان زجاج مغبش واتنضف) */}
-                <div className="pointer-events-none absolute -inset-y-32 -left-[100%] w-[120%] bg-gradient-to-r from-transparent via-white/80 to-transparent transform -skew-x-25 transition-transform duration-1000 ease-out group-hover:translate-x-[260%]" />
+                {/* Light Reflection / Cleaning Shine Sweep */}
+                <div className="pointer-events-none absolute -inset-y-32 -left-[100%] w-[120%] bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-25 transition-transform duration-1000 ease-out group-hover:translate-x-[260%]" />
 
                 {/* Corner Sparkle Effect */}
-                <div className="pointer-events-none absolute top-4 right-4 text-charcoal/30 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
+                <div className="pointer-events-none absolute top-4 right-4 text-white/60 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125 group-hover:text-white">
                   <svg
-                    className="w-6 h-6 text-charcoal/40"
+                    className="w-6 h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -150,19 +177,19 @@ export default function WhyUs() {
                 {/* Content Container */}
                 <div className="relative z-10 flex flex-col gap-5">
                   <div className="flex items-center justify-between">
-                    <div className="p-3.5 rounded-2xl bg-charcoal/5 border border-charcoal/20 group-hover:bg-charcoal group-hover:text-white text-charcoal transition-colors duration-500">
+                    <div className="p-3.5 rounded-2xl bg-white/10 border border-white/20 group-hover:bg-white group-hover:text-[#406D72] text-white transition-colors duration-500">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-charcoal/60">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-white/80">
                       {reason.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-charcoal tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
                     {reason.title}
                   </h3>
 
-                  <p className="text-charcoal/80 text-sm sm:text-base leading-relaxed font-medium">
+                  <p className="text-white/85 text-sm sm:text-base leading-relaxed font-medium">
                     {reason.description}
                   </p>
                 </div>
@@ -171,31 +198,20 @@ export default function WhyUs() {
           })}
         </div>
 
-        {/* Highlight Image & Stats Banner */}
+        {/* Highlight Stats Banner */}
         <div className="mt-16 sm:mt-20">
-          <div
-            className="relative group rounded-3xl p-8 sm:p-12 border border-charcoal overflow-hidden shadow-md hover:shadow-2xl transition-all duration-700"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 240, 240, 0.6) 100%)",
-              backdropFilter: "blur(14px)",
-              WebkitBackdropFilter: "blur(14px)",
-            }}
-          >
-            {/* Frosted Glass Overlay */}
-            <div className="absolute inset-0 bg-white/40 backdrop-blur-md transition-opacity duration-700 pointer-events-none group-hover:opacity-0" />
-            <div className="absolute inset-0 bg-white/95 opacity-0 transition-opacity duration-700 pointer-events-none group-hover:opacity-100" />
-            
-            {/* Shine sweep */}
-            <div className="pointer-events-none absolute -inset-y-32 -left-[100%] w-[120%] bg-gradient-to-r from-transparent via-white/80 to-transparent transform -skew-x-25 transition-transform duration-1000 ease-out group-hover:translate-x-[260%]" />
+          <div className="relative group rounded-3xl p-8 sm:p-12 border border-white/25 bg-white/10 backdrop-blur-md overflow-hidden shadow-2xl transition-all duration-700 hover:bg-white/15">
 
-            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-charcoal/15 text-center">
+            {/* Shine sweep */}
+            <div className="pointer-events-none absolute -inset-y-32 -left-[100%] w-[120%] bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-25 transition-transform duration-1000 ease-out group-hover:translate-x-[260%]" />
+
+            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20 text-center">
               {stats.map((stat, idx) => (
                 <div key={idx} className={`pt-4 md:pt-0 ${idx > 0 ? "md:pl-8" : ""}`}>
-                  <div className="font-mono text-3xl sm:text-4xl lg:text-5xl font-black text-charcoal tracking-tight">
+                  <div className="font-mono text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
                     {stat.value}
                   </div>
-                  <div className="mt-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-charcoal/70">
+                  <div className="mt-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80">
                     {stat.label}
                   </div>
                 </div>
