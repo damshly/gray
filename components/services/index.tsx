@@ -79,9 +79,9 @@ const services: ServiceItem[] = [
 
 export default function Services() {
   return (
-    <section
+<section
       id="leistungen"
-      className="relative w-full text-white pt-24 pb-24 sm:pb-32 lg:pb-36 overflow-hidden z-20 backdrop-blur-xl -mt-24 sm:-mt-32"
+      className="relative w-full text-white pt-24 pb-24 sm:pb-32 lg:pb-36 overflow-hidden z-20 backdrop-blur-xl"
     >
       {/* 🌊 تدرج بداية القسم لانتقال سلس وناعم من القسم السابق */}
       <div

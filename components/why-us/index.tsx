@@ -99,9 +99,9 @@ const stats = [
 
 export default function WhyUs() {
   return (
-    <section
-      id="ueber-mk"
-      className="relative w-full text-white pt-24 pb-24 sm:pb-32 lg:pb-36 overflow-hidden z-20 backdrop-blur-xl -mt-24 sm:-mt-32"
+<section
+      id="leistungen"
+      className="relative w-full text-white pt-24 pb-24 sm:pb-32 lg:pb-36 overflow-hidden z-20 backdrop-blur-xl"
     >
       {/* 🌊 لون الخلفية الثابت بنفس نسبة قسم الخدمات (25%) */}
       <div
