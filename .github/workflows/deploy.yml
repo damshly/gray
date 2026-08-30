@@ -1,0 +1,45 @@
+name: Deploy Next.js to Hostinger
+
+on:
+  push:
+    branches:
+      - main # يشتغل عند الدفع للفرع الرئيسي
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. سحب الكود من المستودع
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. إعداد بيئة Node.js و pnpm (أو npm/yarn)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      # 3. تثبيت التبعيات (Dependencies)
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 4. بناء المشروع وتوليد مجلد out
+      - name: Build Static Site
+        run: pnpm build
+
+      # 5. رفع مجلد out إلى Hostinger عبر FTP
+      - name: Deploy via FTP
+        uses: SamKirsch/ftp-deploy-action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: /public_html/ # المسار الرئيسي على الاستضافة
+          dangerous-clean-slate: false # غيّرها إلى true إذا كنت تريد مسح الملفات القديمة قبل الرفع
