@@ -1,23 +1,24 @@
 import Link from "next/link";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import { Badge, GlassCard } from "@/components/ui";
+import { siteConfig } from "@/config/site";
 
 export const metadata = {
-  title: "Impressum | MK Reinigung Rottweil",
-  description: "Impressum und rechtliche Angaben der MK Reinigung Rottweil.",
+  title: `Impressum | ${siteConfig.name}`,
+  description: `Impressum und rechtliche Angaben der ${siteConfig.name}.`,
 };
 
 export default function ImpressumPage() {
   return (
-    <main className="min-h-screen flex flex-col bg-white text-charcoal">
-      <Navbar />
+    <main className="relative flex-1 w-full bg-brand-teal text-white py-36 sm:py-44 px-6 sm:px-12">
+      {/* Background Subtle Gradient & Grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
 
-      <section className="flex-1 max-w-4xl mx-auto w-full px-6 sm:px-12 py-36 sm:py-44">
+      <section className="relative z-10 max-w-4xl mx-auto w-full">
         {/* Breadcrumb / Back Link */}
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-charcoal/70 hover:text-charcoal transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-colors group"
           >
             <span className="transition-transform group-hover:-translate-x-1">←</span>
             <span>Zurück zur Startseite</span>
@@ -25,24 +26,24 @@ export default function ImpressumPage() {
         </div>
 
         {/* Header */}
-        <div className="border-b border-charcoal/15 pb-8 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-charcoal/30 bg-charcoal/5 text-xs font-bold uppercase tracking-widest text-charcoal mb-3">
-            Rechtliche Hinweise
+        <div className="border-b border-white/20 pb-8 mb-12">
+          <div className="mb-3">
+            <Badge variant="glass" size="sm">
+              Rechtliche Hinweise
+            </Badge>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-charcoal">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
             Impressum
           </h1>
         </div>
 
-        {/* Empty / Placeholder Frame */}
-        <div className="rounded-3xl border border-charcoal/20 p-8 sm:p-12 bg-charcoal/[0.02] backdrop-blur-sm min-h-[300px] flex flex-col items-center justify-center text-center text-charcoal/60">
+        {/* Content Frame */}
+        <GlassCard withSparkle={false} hoverTranslate={false} className="p-8 sm:p-12 min-h-[300px] flex flex-col items-center justify-center text-center text-white/80">
           <p className="text-base font-medium">
             Inhalt folgt in Kürze.
           </p>
-        </div>
+        </GlassCard>
       </section>
-
-      <Footer />
     </main>
   );
 }

@@ -6,12 +6,14 @@
   --color-silver: #c0c0c0;
   --color-cream: #e6e2d0;
   --color-pure-white: #ffffff;
+  --color-brand-teal: #406D72;
 
   /* Aliases for easy access */
   --color-brand-slate: #708090;
   --color-brand-charcoal: #36454f;
   --color-brand-silver: #c0c0c0;
   --color-brand-cream: #e6e2d0;
+  --color-brand-primary: #406D72;
 }
 
 :root {
@@ -20,6 +22,7 @@
   --silver: #c0c0c0;
   --cream: #e6e2d0;
   --pure-white: #ffffff;
+  --brand-teal: #406D72;
 }
 
 body {
