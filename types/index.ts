@@ -1,12 +1,38 @@
 import { ComponentType, SVGProps } from "react";
 
+export interface NavDropdownItem {
+  name: string;
+  href: string;
+  description?: string;
+  icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  badge?: string;
+}
+
+export interface NavSubGroup {
+  title: string;
+  items: NavDropdownItem[];
+}
+
 export interface NavLink {
   name: string;
   href: string;
+  dropdown?: NavSubGroup[];
+}
+
+export interface SubService {
+  id: string;
+  slug: string;
+  title: string;
+  shortDesc: string;
+  description: string;
+  features: string[];
+  metaTitle: string;
+  metaDescription: string;
 }
 
 export interface ServiceItem {
   id: string;
+  slug: string;
   number: string;
   category: string;
   title: string;
@@ -15,6 +41,9 @@ export interface ServiceItem {
   imageSrc: string;
   imageAlt: string;
   imagePosition: "left" | "right";
+  metaTitle: string;
+  metaDescription: string;
+  subServices: SubService[];
 }
 
 export interface ReasonItem {
