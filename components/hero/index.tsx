@@ -35,7 +35,7 @@ export function Hero({ backgroundImage = "/hero.jpg" }: HeroProps) {
             <Badge variant="glass" size="md" className="gap-2.5">
               <span className="font-extrabold text-white">{siteConfig.brandShort}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
-              <span className="font-bold text-white/90">Reinigung Rottweil</span>
+              <span className="font-bold text-white/90">Reinigung Rottweil     x</span>
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] drop-shadow-sm">
