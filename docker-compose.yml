@@ -1,0 +1,29 @@
+version: "3.8"
+
+networks:
+  proxy-net:
+    external: true
+
+services:
+  mk:
+    image: idamshly/mk:latest
+    container_name: mk
+    restart: always
+    user: "1001:1001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - ADMIN_SECRET=${ADMIN_SECRET:-mk-admin-secret-key-2026}
+    volumes:
+      - /var/lib/mk-data/config:/app/config
+      - /var/lib/mk-data/uploads:/app/public/uploads
+    networks:
+      - proxy-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mk.rule=Host(`mk.damshly.com`)"
+      - "traefik.http.routers.mk.entrypoints=websecure"
+      - "traefik.http.routers.mk.tls.certresolver=myresolver"
+      - "traefik.http.services.mk.loadbalancer.server.port=3000"
+  
